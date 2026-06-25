@@ -5,16 +5,16 @@ This product includes third-party software. The application code is MIT
 licensed (see LICENSE); the components below carry their own licenses.
 
 --------------------------------------------------------------------------------
-Bundled binaries (checked into this repository)
+Build-time binaries (NOT stored in this repository)
 --------------------------------------------------------------------------------
 
 android/app/src/main/assets/ggml-hexagon/libggml-htp-v*.so
-  Qualcomm Hexagon (HTP/QNN) backend libraries for ggml/llama.cpp, shipped by
-  llama.rn (node_modules/llama.rn/bin/arm64-v8a). They let llama.cpp offload to
-  a Qualcomm Snapdragon NPU; on other SoCs (e.g. Google Tensor) they are unused
-  and inference falls back to CPU. These are prebuilt binaries redistributed
-  from the llama.rn package. See llama.rn and llama.cpp (MIT) below, and the
-  Qualcomm AI Engine Direct (QNN) SDK license for the Hexagon components.
+  Qualcomm Hexagon (HTP) backend libraries for ggml/llama.cpp. These are NOT
+  committed to this repo — llama.rn's Gradle copies them from its package
+  (node_modules/llama.rn/bin/arm64-v8a) into the app's assets at build time, and
+  the path is git-ignored. They let llama.cpp offload to a Qualcomm Snapdragon
+  NPU; on other SoCs (e.g. Google Tensor) they are unused and inference falls
+  back to CPU. See llama.rn and llama.cpp (MIT) below.
 
 --------------------------------------------------------------------------------
 Runtime / build dependencies
@@ -23,7 +23,7 @@ Runtime / build dependencies
 llama.rn — MIT License
   https://github.com/mybigday/llama.rn
   React Native binding for llama.cpp; provides the native inference modules and
-  the bundled Hexagon backend libraries noted above.
+  the Hexagon backend libraries noted above.
 
 llama.cpp / ggml — MIT License
   https://github.com/ggml-org/llama.cpp

@@ -6,10 +6,10 @@
 [日本語版 README → `README.ja.md`](README.ja.md)
 
 This is a working **demo / reference** for shipping on-device generative AI in a
-React Native app. The model ([Qwen 2.5 / Llama 3.2 in GGUF](#models--licensing))
-runs locally through [llama.rn](https://github.com/mybigday/llama.rn) (a
-llama.cpp binding) — your notes never leave the phone, and it works with no
-network once a model is downloaded.
+React Native app. The model (a [Qwen 2.5 GGUF](#models--licensing)) runs locally
+through [llama.rn](https://github.com/mybigday/llama.rn) (a llama.cpp binding) —
+your notes never leave the phone, and it works with no network once a model is
+downloaded.
 
 Not Expo — this is **bare React Native (CLI)** with the **New Architecture**
 (TurboModules/Fabric), because the LLM needs native modules.
@@ -149,11 +149,6 @@ Both platforms are **verified building and running**:
 Remaining: on-device QA on physical hardware (large-model memory entitlement for
 real iOS devices) and a real-device inference pass.
 
-## Suggested GitHub topics
-
-`react-native` · `on-device-ai` · `local-llm` · `llama-cpp` · `llama-rn` ·
-`gguf` · `offline-first` · `privacy` · `ios` · `android`
-
 ## Packaging & security notes
 
 This is a **reference/demo**, not a store-ready build:
@@ -170,13 +165,13 @@ This is a **reference/demo**, not a store-ready build:
   of the React Native 0.76 toolchain (CLI / Metro). They are not in the app's
   runtime path; clearing them requires a major RN/toolchain bump, tracked
   separately from this demo.
-- **Bundled Hexagon binaries** (`android/app/src/main/assets/ggml-hexagon/*.so`,
-  ~1.7 MB) are prebuilt Qualcomm NPU backends redistributed from `llama.rn`; see
-  [`NOTICE`](NOTICE). They are unused on non-Qualcomm SoCs (inference falls back
-  to CPU).
+- **Hexagon NPU backend libraries** are copied from `llama.rn` into the app's
+  Android assets **at build time** (`android/app/src/main/assets/ggml-hexagon/`,
+  git-ignored — not vendored in this repo); see [`NOTICE`](NOTICE). They are
+  unused on non-Qualcomm SoCs (inference falls back to CPU).
 
 ## License
 
 MIT — see [`LICENSE`](LICENSE). Third-party components (llama.rn, llama.cpp,
-bundled Hexagon libraries) are listed in [`NOTICE`](NOTICE). Bundled/downloaded
+the Hexagon backend libraries) are listed in [`NOTICE`](NOTICE). Downloaded
 models carry their own licenses — see the table above.

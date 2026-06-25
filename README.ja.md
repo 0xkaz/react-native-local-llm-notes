@@ -144,11 +144,6 @@ const { text } = await ai.summarize(noteBody, 'threeLines');
 残作業: 実機での最終QA（実機 iOS 向け大型モデル用メモリエンタイトルメント、
 実機での推論パス）。
 
-## GitHub topics（推奨）
-
-`react-native` · `on-device-ai` · `local-llm` · `llama-cpp` · `llama-rn` ·
-`gguf` · `offline-first` · `privacy` · `ios` · `android`
-
 ## パッケージング・セキュリティ注記
 
 本リポジトリは**リファレンス／デモ**であり、ストア配布可能なビルドではありません:
@@ -164,13 +159,13 @@ const { text } = await ai.summarize(noteBody, 'threeLines');
 - **`npm audit`** は React Native 0.76 ツールチェーン（CLI / Metro）の推移的依存に
   moderate の指摘を出します。アプリ実行時の経路ではなく、解消には RN/ツールチェーン
   のメジャー更新が必要なため、本デモとは別管理とします。
-- **同梱 Hexagon バイナリ**（`android/app/src/main/assets/ggml-hexagon/*.so`、
-  約1.7MB）は `llama.rn` から再配布される Qualcomm NPU 向けプリビルドです
-  （[`NOTICE`](NOTICE) 参照）。Qualcomm 以外の SoC では未使用で CPU 推論に
-  フォールバックします。
+- **Hexagon NPU バックエンドライブラリ**は **ビルド時に `llama.rn` から**
+  アプリの Android assets へコピーされます（`android/app/src/main/assets/
+  ggml-hexagon/`、gitignore 済み＝リポジトリには同梱しません。[`NOTICE`](NOTICE)
+  参照）。Qualcomm 以外の SoC では未使用で CPU 推論にフォールバックします。
 
 ## ライセンス
 
 MIT — [`LICENSE`](LICENSE) を参照。第三者コンポーネント（llama.rn・llama.cpp・
-同梱 Hexagon ライブラリ）は [`NOTICE`](NOTICE) に記載。同梱・ダウンロードされる
-モデルは各自のライセンスに従います（上表参照）。
+Hexagon ライブラリ）は [`NOTICE`](NOTICE) に記載。ダウンロードされるモデルは
+各自のライセンスに従います（上表参照）。

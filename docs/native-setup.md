@@ -130,8 +130,8 @@ npm run ios               # or: npx react-native run-ios --device
 npm run android
 ```
 
-On first launch the model catalog is empty on disk — open **Settings → AI model**
-and download a model (Wi-Fi recommended; ~1.1 GB for the default Qwen2.5 1.5B).
+On first launch no model is downloaded yet — open **Settings → AI model** and
+download one (Wi-Fi recommended; ~1.1 GB for the default Qwen2.5 1.5B).
 Inference is unavailable until a model finishes downloading and loading.
 
 > Note: `npm run ios` / `npm run android` scripts are added by the CLI template

@@ -1,0 +1,4 @@
+<resources>
+    <!-- Brand accent (indigo), used for the launch background. -->
+    <color name="brand">#4F5BD5</color>
+</resources>

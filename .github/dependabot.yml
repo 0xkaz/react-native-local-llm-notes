@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # JavaScript / React Native dependencies. Grouped to reduce PR noise; the
+  # React Native 0.76 toolchain pins (see docs/native-setup.md) intentionally
+  # lag latest, so review RN/Metro/CLI bumps carefully before merging.
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      dev-dependencies:
+        dependency-type: development
+
+  # GitHub Actions used by CI.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

@@ -1,5 +1,5 @@
 import RNFS from 'react-native-fs';
-import { ModelInfo } from '../../core';
+import { ModelInfo, sha256Matches } from '../../core';
 import { DEV_MODEL_BASE_URL } from '../devConfig';
 
 const MODELS_DIR = `${RNFS.DocumentDirectoryPath}/models`;
@@ -91,6 +91,16 @@ export async function downloadModel(
       throw new Error(
         `Download incomplete: ${written}/${expectedBytes} bytes`,
       );
+    }
+    // Verify content integrity against the published SHA-256 (if any). Catches a
+    // corrupted/tampered file that happens to be the right length.
+    if (model.sha256) {
+      const digest = await RNFS.hash(localPathFor(model), 'sha256');
+      if (!sha256Matches(model.sha256, digest)) {
+        throw new Error(
+          `Checksum mismatch: expected ${model.sha256}, got ${digest}`,
+        );
+      }
     }
     return written;
   } catch (e) {

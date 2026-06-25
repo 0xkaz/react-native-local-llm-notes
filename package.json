@@ -8,7 +8,7 @@
     "start": "react-native start",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "lint": "eslint \"src/core/**/*.ts\" \"tests/**/*.ts\"",
+    "lint": "eslint \"src/core/**/*.ts\" \"src/app/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "typecheck:app": "tsc -p tsconfig.app.json",
     "test": "jest",

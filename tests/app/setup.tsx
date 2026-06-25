@@ -21,7 +21,9 @@ afterEach(() => {
 jest.mock(
   'react-native-vector-icons/MaterialCommunityIcons',
   () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires -- jest.mock factory must use require (hoisted)
     const React = require('react');
+    // eslint-disable-next-line @typescript-eslint/no-var-requires -- jest.mock factory must use require (hoisted)
     const { Text } = require('react-native');
     const Icon = (props: { name?: string }) =>
       React.createElement(Text, null, props.name ?? 'icon');

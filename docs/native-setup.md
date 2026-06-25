@@ -75,6 +75,12 @@ and reference it in the target's *Signing & Capabilities*:
 </plist>
 ```
 
+> **Status:** the shipped `AiNoteOfflineAiMemo.entitlements` currently contains
+> only the **App Group** (used by the Share Extension). The memory entitlement
+> above is **not yet applied** — add it when targeting real devices with large
+> models (the simulator uses host RAM and does not need it). See "Remaining iOS
+> work" at the end.
+
 ### Info.plist
 
 Model downloads use HTTPS (see `src/core/models/catalog.ts`), so App Transport

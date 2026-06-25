@@ -22,6 +22,8 @@ export interface ModelInfo {
   commercialUse: CommercialUse;
   /** GGUF download URL (Hugging Face). */
   url: string;
+  /** Lowercase hex SHA-256 of the GGUF, verified after download (optional). */
+  sha256?: string;
 }
 
 const GB = 1024 * 1024 * 1024;
@@ -35,6 +37,8 @@ export const MODEL_CATALOG: ModelInfo[] = [
     license: 'Apache-2.0',
     commercialUse: 'allowed',
     url: 'https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct-q4_k_m.gguf',
+    sha256:
+      '6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e',
   },
 ];
 

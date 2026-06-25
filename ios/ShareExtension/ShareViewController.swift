@@ -43,9 +43,12 @@ class ShareViewController: UIViewController {
       defaults.set(text, forKey: "pendingSharedText")
     }
     // Best-effort: also try to open the app immediately via the deep link.
-    let encoded =
-      text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-    if let url = URL(string: "ainote://share?sharedText=\(encoded)") {
+    // Build with URLComponents so text containing & or = is encoded correctly.
+    var components = URLComponents()
+    components.scheme = "ainote"
+    components.host = "share"
+    components.queryItems = [URLQueryItem(name: "sharedText", value: text)]
+    if let url = components.url {
       openURL(url)
     }
     complete()

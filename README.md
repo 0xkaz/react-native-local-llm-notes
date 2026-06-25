@@ -119,8 +119,8 @@ npm run android  # Android (emulator or device)
 npm run ios      # iOS (simulator or device)
 ```
 
-On first launch the model catalog is empty — open **Settings → AI model** and
-download a model (Wi-Fi recommended; ~1.1 GB for the default Qwen2.5 1.5B).
+On first launch no model is downloaded yet — open **Settings → AI model** and
+download one (Wi-Fi recommended; ~1.1 GB for the default Qwen2.5 1.5B).
 AI features become available once a model finishes downloading and loading.
 
 Using the engine directly:

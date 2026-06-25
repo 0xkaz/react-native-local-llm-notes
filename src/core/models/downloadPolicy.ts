@@ -30,6 +30,19 @@ export function isWifiOnlyDownloadBlocked(ctx: WifiDownloadContext): boolean {
 }
 
 /**
+ * Whether a computed digest matches the expected one (case-insensitive hex).
+ * When no checksum is known (`expected` empty/undefined) verification is skipped
+ * and this returns true — so models without a published hash still load.
+ */
+export function sha256Matches(
+  expected: string | undefined,
+  actual: string,
+): boolean {
+  if (!expected) return true;
+  return expected.trim().toLowerCase() === actual.trim().toLowerCase();
+}
+
+/**
  * Thrown to abort a model download that would violate the "Wi-Fi only" setting.
  * Raised from the `onWillDownload` hook the engine calls only when an actual
  * download is about to start, so it is authoritative regardless of stored

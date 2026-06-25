@@ -17,5 +17,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-console': 'off',
   },
-  ignorePatterns: ['dist/', 'node_modules/', 'src/native/', 'src/app/'],
+  // src/native is device-only (@ts-nocheck; needs native modules). Everything
+  // else, including src/app, is linted.
+  ignorePatterns: ['dist/', 'node_modules/', 'src/native/'],
 };

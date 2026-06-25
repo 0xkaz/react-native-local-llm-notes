@@ -38,6 +38,9 @@ android/build/
 android/app/build/
 android/app/.cxx/
 android/local.properties
+# Hexagon HTP libraries: copied from llama.rn into assets at build time, so they
+# don't belong in the repo (avoids redistributing third-party prebuilt binaries).
+android/app/src/main/assets/ggml-hexagon/
 *.keystore
 !debug.keystore
 

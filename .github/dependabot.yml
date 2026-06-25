@@ -11,6 +11,17 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: development
+    ignore:
+      # Pinned for React Native 0.76 compatibility (see docs/native-setup.md) —
+      # never auto-bump these; they break the build / toolchain.
+      - dependency-name: "react"
+      - dependency-name: "react-native"
+      - dependency-name: "@react-native/*"
+      - dependency-name: "@react-native-async-storage/async-storage"
+      - dependency-name: "react-native-screens"
+      # Major bumps here generally need manual migration; propose minor/patch only.
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions used by CI.
   - package-ecosystem: github-actions
